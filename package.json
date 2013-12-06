@@ -1,0 +1,24 @@
+{
+    "name": "easy-validator",
+    "description": "Simple object validator for NodeJS",
+    "version": "0.1.0",
+    "author": "Albert Lacarta <urodoz@gmail.com>",
+    "dependencies": {
+        "underscore": ">= 1.5.2"
+    },
+    "devDependencies": {
+        "mocha": "~1.14.0"
+    },
+    "keywords": [
+        "validation",
+        "validator"
+    ],
+    "repository": "https://github.com/urodoz/easy-validator.git",
+    "main": "index",
+    "scripts": {
+        "test": "make test"
+    },
+    "engines": {
+        "node": ">= 0.10.0"
+    }
+}
