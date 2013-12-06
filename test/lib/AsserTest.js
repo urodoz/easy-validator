@@ -194,6 +194,87 @@ describe('Assert:NotNull Validations', function() {
     
 });
 
+describe('Assert:Range Validations', function(){
+    
+    it('No numeric value should add a violation', function(done){
+        var constraintCollection = eValidator.Assert({
+            value: ['@Assert:Range(min=0,max=50)']
+        })
+        violationList = constraintCollection.perform.validate({value:"string"})
+        assert.ok(_.isArray(violationList));
+        assert.ok(0<violationList.length);
+        done();
+    });
+    
+    it('Only min defined should return violations only for smaller values', function(done){
+        var constraintCollection = eValidator.Assert({
+            value: ['@Assert:Range(min=18)']
+        })
+        violationList = constraintCollection.perform.validate({value:-10})
+        assert.ok(_.isArray(violationList));
+        assert.ok(0<violationList.length);
+        
+        violationList = constraintCollection.perform.validate({value:0})
+        assert.ok(_.isArray(violationList));
+        assert.ok(0<violationList.length);
+        
+        violationList = constraintCollection.perform.validate({value:18})
+        assert.ok(_.isNull(violationList));
+        
+        violationList = constraintCollection.perform.validate({value:1000})
+        assert.ok(_.isNull(violationList));
+        done();
+    });
+    
+    it('Only max defined should return violations only for greater values', function(done){
+        var constraintCollection = eValidator.Assert({
+            value: ['@Assert:Range(max=100)']
+        })
+        violationList = constraintCollection.perform.validate({value:1000})
+        assert.ok(_.isArray(violationList));
+        assert.ok(0<violationList.length);
+        
+        violationList = constraintCollection.perform.validate({value:110})
+        assert.ok(_.isArray(violationList));
+        assert.ok(0<violationList.length);
+        
+        violationList = constraintCollection.perform.validate({value:100})
+        assert.ok(_.isNull(violationList));
+        
+        violationList = constraintCollection.perform.validate({value:12})
+        assert.ok(_.isNull(violationList));
+        done();
+    });
+    
+    it('For range values should add violations for values out of range', function(done){
+        var constraintCollection = eValidator.Assert({
+            value: ['@Assert:Range(min=22,max=100)']
+        })
+        violationList = constraintCollection.perform.validate({value:10})
+        assert.ok(_.isArray(violationList));
+        assert.ok(0<violationList.length);
+        
+        violationList = constraintCollection.perform.validate({value:110})
+        assert.ok(_.isArray(violationList));
+        assert.ok(0<violationList.length);
+        
+        violationList = constraintCollection.perform.validate({value:33})
+        assert.ok(_.isNull(violationList));
+        
+        violationList = constraintCollection.perform.validate({value:99})
+        assert.ok(_.isNull(violationList));
+        
+        //Borders
+        violationList = constraintCollection.perform.validate({value:22})
+        assert.ok(_.isNull(violationList));
+        
+        violationList = constraintCollection.perform.validate({value:100})
+        assert.ok(_.isNull(violationList));
+        done();
+    });
+    
+});
+
 describe('Assert:Null Validations', function() {
     
     it('Null on property should not add violation on non-existant value', function(done){

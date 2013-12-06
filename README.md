@@ -59,6 +59,19 @@ Forces a value to be null value, or be undefined. Will add an error to violation
 
 ###### No configuration
 
+##### @Assert:Range() For numeric values
+
+Forces a value to be defined in a range of numbers. Should be between min and max configurations if defined.
+Both configuration 'min' and 'max' are optional configurations.
+
+Sample :
+
+```javascript
+var constraintCollection = eValidator.Assert({
+  name: ['@Assert:Range(min=18,max=99)'] //Should be between 18 and 99 the value to be matched
+})
+```
+
 ##### @Assert:Type()
 
 Forces a value to be null value, or be undefined. Will add an error to violation list if not null or defined
