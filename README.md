@@ -3,6 +3,11 @@ easy-validator
 
 Simple object validator for NodeJS (as Symfony Annotation validation system)
 
+Status
+------
+
+[![Build Status](https://travis-ci.org/urodoz/easy-validator.png?branch=master)](https://travis-ci.org/urodoz/easy-validator)
+
 Installation
 ------------
 
