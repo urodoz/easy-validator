@@ -1,1 +1,3 @@
-module.exports = null;
+module.exports = {
+    Assert: require('./lib/Assert.js')
+}

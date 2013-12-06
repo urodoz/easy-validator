@@ -4,7 +4,8 @@
     "version": "0.1.0",
     "author": "Albert Lacarta <urodoz@gmail.com>",
     "dependencies": {
-        "underscore": ">= 1.5.2"
+        "underscore": "~1.5.2",
+        "assert": "~1.0.0"
     },
     "devDependencies": {
         "mocha": "~1.14.0"
