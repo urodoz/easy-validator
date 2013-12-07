@@ -15,10 +15,10 @@ Installation
 $ npm install easy-validator
 ```
 
-To run the unit tests with moche from your project :
+To run the unit tests with mocha from your project :
 
 ```shell
-mocha --recursive node_modules/easy-validator/test/
+npm test
 ```
 
 Validating Objects
