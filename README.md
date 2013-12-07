@@ -52,6 +52,20 @@ _.each(violationList, function(violation){
 List of Asserts
 ---------------
 
+##### @Assert:Email() For string values
+
+Forces a value to be a valid email
+
+Sample :
+
+```javascript
+var constraintCollection = eValidator.Assert({
+  email_address: ['@Assert:Email()']
+})
+```
+
+###### No configuration
+
 ##### @Assert:NotNull()
 
 Forces a value to be not null value, and to be defined. Will add an error to violation list if null or undefined

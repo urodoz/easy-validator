@@ -275,6 +275,73 @@ describe('Assert:Range Validations', function(){
     
 });
 
+describe('Assert: Email validations', function() {
+    
+    it('Valid email on property should not add violation', function(done) {
+        var constraintCollection = eValidator.Assert({
+            email_address: ['@Assert:Email()']
+        })
+        violationList = constraintCollection.perform.validate({email_address: 'urodoz@gmail.com'})
+        assert.ok(_.isNull(violationList));
+        done();
+    })
+    
+    validEmailArray = [
+        'email@example.com',
+        'firstname.lastname@example.com',
+        'email@subdomain.example.com',
+        'firstname+lastname@example.com',
+        '1234567890@example.com',
+        'email@example-one.com',
+        '_______@example.com',
+        'email@example.name',
+        'email@example.museum',
+        'email@example.co.jp',
+        'firstname-lastname@example.com'
+    ];
+    
+    _.each(validEmailArray, function(validEmail) {
+        it('Valid email ['+validEmail+'] on property should not add violation', function(done) {
+            var constraintCollection = eValidator.Assert({
+                email_address: ['@Assert:Email()']
+            })
+            violationList = constraintCollection.perform.validate({email_address:validEmail})
+            assert.ok(_.isNull(violationList));
+            done();
+        })    
+    });
+    
+    invalidEmailArray = [
+        'plainaddress',
+        '#@%^%#$@#$@#.com',
+        '@example.com',
+        'Joe Smith <email@example.com>',
+        'email.example.com',
+        'email@example@example.com',
+        '.email@example.com',
+        'email.@example.com',
+        'email..email@example.com',
+        'email@example.com (Joe Smith)',
+        'email@example',
+        'email@111.222.333.44444',
+        'email@example..com',
+        'Abc..123@example.com'
+    ];
+    
+    _.each(invalidEmailArray, function(invalidEmail) {
+        it('Valid email ['+invalidEmail+'] on property should add violation', function(done) {
+            var constraintCollection = eValidator.Assert({
+                email_address: ['@Assert:Email()']
+            })
+            violationList = constraintCollection.perform.validate({email_address:invalidEmail})
+            assert.ok(_.isArray(violationList));
+            assert.ok(0<violationList.length);
+            done();
+        })    
+    });
+    
+});
+
 describe('Assert:Null Validations', function() {
     
     it('Null on property should not add violation on non-existant value', function(done){
