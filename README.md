@@ -32,12 +32,16 @@ var eValidator = require('easy-validator');
 
 //Creating sample object
 var objectToValidate = {
-  name: "Foo"
+  name: "Foo",
+  email: "urodoz@gmail.com",
+  age: 33
 };
 
 //Create the constraint collection (The name property should pass the 2 validations , NotNull and String type
 var constraintCollection = eValidator.Assert({
-  name: ['@Assert:NotNull()', '@Assert:Type("string")'] // <-- Array of asserts
+  name:  ['@Assert:NotNull()', '@Assert:Type("string")'], // <-- Array of asserts for each property required to validate
+  email: ['@Assert:Email()'],
+  age:   ['@Assert:Range(min=18,max=99)']
 });
 
 //Validate the object, and retrieve the list of errors
