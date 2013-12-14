@@ -1,25 +1,25 @@
 {
-    "name": "easy-validator",
-    "description": "Simple object validator for NodeJS",
-    "version": "0.1.5",
-    "author": "Albert Lacarta <urodoz@gmail.com>",
-    "dependencies": {
-        "underscore": "~1.5.2",
-        "assert": "~1.0.0"
-    },
-    "devDependencies": {
-        "mocha": "~1.14.0"
-    },
-    "keywords": [
-        "validation",
-        "validator"
-    ],
-    "repository": "https://github.com/urodoz/easy-validator.git",
-    "main": "index",
-    "scripts": {
-        "test": "mocha --recursive"
-    },
-    "engines": {
-        "node": ">= 0.10.0"
-    }
+  "name": "easy-validator",
+  "description": "Simple object validator for NodeJS",
+  "version": "0.2.0",
+  "author": "Albert Lacarta <urodoz@gmail.com>",
+  "dependencies": {
+    "underscore": "~1.5.2",
+    "assert": "~1.0.0"
+  },
+  "devDependencies": {
+    "mocha": "~1.14.0"
+  },
+  "keywords": [
+    "validation",
+    "validator"
+  ],
+  "repository": "https://github.com/urodoz/easy-validator.git",
+  "main": "index",
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  }
 }
