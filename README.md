@@ -39,9 +39,9 @@ var objectToValidate = {
 
 //Create the constraint collection (The name property should pass the 2 validations , NotNull and String type
 var constraintCollection = eValidator.Assert({
-  name:  ['@Assert:NotNull()', '@Assert:Type("string")'], // <-- Array of asserts for each property required to validate
-  email: ['@Assert:Email()'],
-  age:   ['@Assert:Range(min=18,max=99)']
+  "name":  ['@Assert:NotNull()', '@Assert:Type("string")'], // <-- Array of asserts for each property required to validate
+  "email": ['@Assert:Email()'],
+  "age":   ['@Assert:Range(min=18,max=99)']
 });
 
 //Validate the object, and retrieve the list of errors
@@ -50,6 +50,23 @@ violationList = constraintCollection.perform.validate(objectToValidate);
 //You can see all errors on the violationsList (array)
 _.each(violationList, function(violation){
   console.log("Property ["+violation.propertyPath+"] Error ["+violation.message+"]");
+});
+```
+
+The same validation can be achieved wit object definition, instead string definition :
+
+```javascript
+//String definition of the validators
+var constraintCollection = eValidator.Assert({
+  "name":  ['@Assert:NotNull()', '@Assert:Type("string")'], // <-- Array of asserts for each property required to validate
+  "email": ['@Assert:Email()'],
+  "age":   ['@Assert:Range(min=18,max=99)']
+});
+//The same object defined with object by each property
+var constraintCollection = eValidator.Assert({
+  "name":  {"assert":'NotNull'},
+  "email": {"assert": 'Email'},
+  "age":   {"assert": 'Range', "min":18, "max":99}
 });
 ```
 
